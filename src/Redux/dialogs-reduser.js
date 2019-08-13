@@ -1,4 +1,4 @@
-const APDATE_NEW_MESSAGE_BODY = 'APDATE_NEW_MESSAGE_BODY';
+
 const SEND_MESSAGE = "SEND_MESSAGE";
 
 let initialState = {
@@ -20,22 +20,18 @@ let initialState = {
 
 const dialogsReduser = (state = initialState, action)=>{
 
-    let stateCopy = {...state,
-    messages: [...state.messages]};
      switch(action.type){
-         case APDATE_NEW_MESSAGE_BODY:
-        stateCopy.newMessageBody = action.body;
-         return stateCopy
-    case SEND_MESSAGE:
-        let body = stateCopy.newMessageBody;
-        stateCopy.newMessageBody = "";
-        stateCopy.messages.push({ message: body, id:6});
-        return stateCopy;
+         case SEND_MESSAGE:
+        let body = action.newMessageBody;
+        return {
+            ...state,
+            messages: [...state.messages, {id:6, message: body}]
+        };
 
 
          default:return state;
 }}
 export default dialogsReduser;
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE});
-export const updateNewMessageBodyCreator = (body) => ({type: APDATE_NEW_MESSAGE_BODY, body: body});
+export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody});
+
