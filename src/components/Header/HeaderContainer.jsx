@@ -6,9 +6,7 @@ import {getAuth, getAuthAC, logout} from "../../Redux/auth-reducer";
 
 class HeaderContainer extends React.Component {
 
-    componentDidMount() {
-        this.props.getAuth();
-    }
+
 
     render() {
         return (
@@ -22,9 +20,6 @@ let mapStateToProps=(state)=>({
 });
 
 let mapDispatchToProps=(dispatch)=>({
-    getAuth: ()=>{
-        dispatch(getAuthAC())
-    },
     logout:()=>{
         dispatch(logout())
     }
