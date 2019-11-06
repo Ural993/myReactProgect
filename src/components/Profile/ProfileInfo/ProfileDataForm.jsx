@@ -1,5 +1,6 @@
 import React from 'react';
 import Contact from "./ProfileInfo";
+import {createField, Input} from "../../common/FormsControls/FormsControls";
 
 
 
@@ -7,7 +8,7 @@ const ProfileDataForm = (props)=>{
     return(
         <form>
             <div><button onClick={props.goToEditMode}>save</button></div>
-            <div><b>Fullname:</b> {props.profile.fullName}</div>
+            <div><b>Fullname:</b> {createField("Full Name", "FullName", Input, [])}</div>
             <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "Yes" : "No"}</div>
             {props.profile.lookingForAJob &&
             <div><b>My professional skills:</b> {props.profile.lookingForAJobDescription}</div>}
