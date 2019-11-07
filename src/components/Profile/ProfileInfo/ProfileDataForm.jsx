@@ -12,7 +12,7 @@ const ProfileDataForm = (props)=>{
                     validate={[]}/>}</div>
             <div><b>Looking for a job:</b> {<Field  name={"lookingForAJob"} component={Input} type={"checkbox"}
                     validate={[]}/>}</div>
-            <div><b>My professional skills:</b> {<Field placeholder={"Professional skills"} name={"professionalSkills"} component={Textarea}
+            <div><b>My professional skills:</b> {<Field placeholder={"Professional skills"} name={"lookingForAJobDescription"} component={Textarea}
                     validate={[]}/>}</div>
             <div><b>About me:</b> {<Field placeholder={"About me"} name={"aboutMe"} component={Textarea}
                     validate={[]}/>}</div>
