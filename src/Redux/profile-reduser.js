@@ -73,3 +73,12 @@ export const savePhoto = (photo) => (dispatch)=>{
             }
         } );
 };
+export const saveProfile = (profile) => (dispatch)=>{
+    profileAPI.saveProfile(profile)
+        .then(response => {
+            debugger
+            if(response.data.resultCode === 0){
+                dispatch(savePhotoSuccess(response.data.data.photos));
+            }
+        } );
+};

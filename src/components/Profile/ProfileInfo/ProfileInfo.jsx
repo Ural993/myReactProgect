@@ -19,13 +19,16 @@ const ProfileInfo = (props) => {
             props.savePhoto(e.target.files[0])
         }
     }
+    const onSubmit = (formData)=>{
+       props.saveProfile(formData);
+    };
     return (
         <div>
             <div className={s.descriptionBlock}>
                 <img src={props.profile.photos.large  || userPhoto} className={s.mainPhoto}/>
                 {props.isOwner && <div><input type="file" onChange={onMainPhotoSelected}/></div>}
                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
-                { editMode ? <ProfileDataForm profile = {props.profile}/>
+                { editMode ? <ProfileDataForm onSubmit={onSubmit} profile = {props.profile}/>
                 :<ProfileData goToEditMode ={()=>{setEditMode(true)}} profile = {props.profile} isOwner = {props.isOwner}/>}
 
             </div>

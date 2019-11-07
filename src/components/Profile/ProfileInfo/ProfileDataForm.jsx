@@ -1,23 +1,27 @@
 import React from 'react';
 import Contact from "./ProfileInfo";
-import {createField, Input} from "../../common/FormsControls/FormsControls";
-
+import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
+import {Field, reduxForm} from "redux-form";
 
 
 const ProfileDataForm = (props)=>{
     return(
-        <form>
-            <div><button onClick={props.goToEditMode}>save</button></div>
-            <div><b>Fullname:</b> {createField("Full Name", "FullName", Input, [])}</div>
-            <div><b>Looking for a job:</b> {props.profile.lookingForAJob ? "Yes" : "No"}</div>
-            {props.profile.lookingForAJob &&
-            <div><b>My professional skills:</b> {props.profile.lookingForAJobDescription}</div>}
-            <div><b>About me:</b> {props.profile.aboutMe || "--"}</div>
-            <div><b>Contacts:</b> {Object.keys(props.profile.contacts).map(key =>{
-                return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} />
-            })}</div>
+        <form onSubmit={props.handleSubmit}>
+            <div><button>save</button></div>
+            <div><b>Fullname:</b> {  <Field placeholder={"Full Name"} name={"fullName"} component={Input}
+                    validate={[]}/>}</div>
+            <div><b>Looking for a job:</b> {<Field  name={"lookingForAJob"} component={Input} type={"checkbox"}
+                    validate={[]}/>}</div>
+            <div><b>My professional skills:</b> {<Field placeholder={"Professional skills"} name={"professionalSkills"} component={Textarea}
+                    validate={[]}/>}</div>
+            <div><b>About me:</b> {<Field placeholder={"About me"} name={"aboutMe"} component={Textarea}
+                    validate={[]}/>}</div>
+           
         </form>
     )
 
 };
-export default ProfileDataForm;
+const ProfileDataFormReduxForm = reduxForm({
+    form:"edit-profile"
+})(ProfileDataForm);
+export default ProfileDataFormReduxForm;
