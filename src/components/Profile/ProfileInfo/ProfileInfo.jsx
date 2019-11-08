@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
     }
     const onSubmit = (formData)=>{
        props.saveProfile(formData);
-        setEditMode(false);
+        //setEditMode(false);
     };
     return (
         <div>
@@ -59,7 +59,7 @@ const ProfileData = (props)=>{
            <div><b>My professional skills:</b> {props.profile.lookingForAJobDescription}</div>}
            <div><b>About me:</b> {props.profile.aboutMe || "--"}</div>
            <div><b>Contacts:</b> {Object.keys(props.profile.contacts).map(key =>{
-               return <Contact contactTitle={key} contactValue={props.profile.contacts[key]} />
+               return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
            })}</div>
        </div>
    )

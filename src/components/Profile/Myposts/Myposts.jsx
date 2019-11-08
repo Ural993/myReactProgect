@@ -10,7 +10,7 @@ import {Textarea} from "../../common/FormsControls/FormsControls";
 const Myposts = (props) => {
 
     let MessageElement = props.posts.map((m) => {
-        return (<Post id={m.id} message={m.message}/>);
+        return (<Post key={m.id} id={m.id} message={m.message}/>);
     });
     let addNewPost = (values)=>{
         props.addPost(values.newPostBody);
