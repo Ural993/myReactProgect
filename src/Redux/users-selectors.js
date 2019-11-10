@@ -6,8 +6,11 @@ export const getUsersSelector =(state)=>{
 export const getPageSize =(state)=>{
     return state.usersPage.pageSize
 };
-export const getTotalUsersCount =(state)=>{
-    return  state.usersPage.totalUsersCount
+export const getPortionSize =(state)=>{
+    return state.usersPage.portionSize
+};
+export const getTotalItemsCount =(state)=>{
+    return  state.usersPage.totalItemsCount
 };
 export const getCurrentPage =(state)=>{
     return  state.usersPage.currentPage

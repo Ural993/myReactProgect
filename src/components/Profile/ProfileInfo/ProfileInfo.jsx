@@ -14,14 +14,16 @@ const ProfileInfo = (props) => {
     if(!props.profile){
         return <Preloader/>
     }
-    const onMainPhotoSelected =(e)=>{
-        if(e.target.files.length){
+    const onMainPhotoSelected =(e)=> {
+        if (e.target.files.length) {
             props.savePhoto(e.target.files[0])
         }
-    }
+    };
     const onSubmit = (formData)=>{
-       props.saveProfile(formData);
-        //setEditMode(false);
+       props.saveProfile(formData).then(
+           ()=>{setEditMode(false)
+           }
+       );
     };
     return (
         <div>
